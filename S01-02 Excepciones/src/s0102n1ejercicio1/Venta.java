@@ -24,24 +24,29 @@ public class Venta {
 
 		double totalVentas = 0;
 		int i = 0;
+		final String MESSEGEVV = "Para hacer una venta primero debes anadir productos";
 
 		try {
+			if (productos.size() == 0) {
+				
+				throw new ArrayIndexOutOfBoundsException();
+				
+			} else {
+				
+				do {
 
-			do {
+					totalVentas = totalVentas + productos.get(i).getPrecio();
 
-				totalVentas = totalVentas + productos.get(i).getPrecio();
+					i++;
 
-				i++;
-
-			} while (i < productos.size());
+				} while (i < productos.size());
+			}
 
 		} catch (Exception e) {
-			
-			final String MESSEGEVV = "Para hacer una venta primero debes anadir productos";
 
-			Excepcion vv = new VentaVaciaExcepcion(MESSEGEVV);
+			Exception vv = new VentaVaciaExcepcion(MESSEGEVV);
 
-			System.out.println(vv.getMessege());
+			System.out.println(vv.getMessage());
 
 		} finally {
 
